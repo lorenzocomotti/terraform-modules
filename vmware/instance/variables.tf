@@ -1,7 +1,3 @@
-variable "hostname" {
-  default = "automium-managed-vm"
-}
-
 variable "domain" {
   default = "automium.internal"
 }
@@ -39,12 +35,4 @@ variable "vmware_datacenter" {
 }
 
 variable "vmware_resource_pool"{
-}
-
-variable "tags" {
-  type = "map"
-  default = {
-    role = "generic"
-    status = "generic"
-  }
 }

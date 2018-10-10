@@ -25,12 +25,12 @@ data "vsphere_virtual_machine" "template" {
 resource "vsphere_virtual_machine" "instance" {
   name             = "${var.name}"
   resource_pool_id = "${data.vsphere_resource_pool.resourcepool.id}"
-  datastore_cluster_id     = "${data.vsphere_datastore_cluster.datastore.id}"
-  count            = ${var.quantity}
+  datastore_cluster_id = "${data.vsphere_datastore_cluster.datastore.id}"
+  count = "${var.quantity}"
 
-  num_cpus = ${var.cpus}
-  memory   = ${var.memory}
-  memory_reservation = ${var.memory_reservation}
+  num_cpus = "${var.cpus}"
+  memory   = "${var.memory}"
+  memory_reservation = "${var.memory_reservation}"
 
   guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
   scsi_type = "${data.vsphere_virtual_machine.template.scsi_type}"
@@ -48,17 +48,18 @@ resource "vsphere_virtual_machine" "instance" {
   }
 
   clone {
+    
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
-
-  customize {
+    customize {
+     
       linux_options {
-        host_name = "${var.hostname}"
+        host_name = "${var.name}"
         domain    = "${var.domain}"
       }
 
-  network_interface {
+      network_interface {
    
-     }  
+      }  
     }
   }
 }
