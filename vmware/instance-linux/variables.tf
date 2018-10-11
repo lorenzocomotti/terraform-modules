@@ -22,7 +22,7 @@ variable "name" {
 }
 
 variable "vmware_template" {
-  default = "windows-Server-2016"
+  default = "Ubuntu-16.04"
 }
 
 variable "vmware_datastore" {
@@ -37,5 +37,11 @@ variable "vmware_datacenter" {
 variable "vmware_resource_pool"{
 }
 
-variable "windows_password" {
+variable "network_address"{
+}
+
+variable "network_mask"{
+}
+
+variable "network_gateway"{
 }

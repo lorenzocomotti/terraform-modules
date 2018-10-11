@@ -50,30 +50,16 @@ resource "vsphere_virtual_machine" "instance" {
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
      customize {
-    #  windows_options {
-    #    computer_name  = "${var.name}"
-    #    admin_password = "${var.windows_password}"
-    #  }
+       linux_options {
+        host_name = "${var.name}"
+        domain    = "${var.domain}"
+      }
       network_interface {
-      }  
+        ipv4_address = "${var.network_address}"
+        ipv4_netmask = "${var.network_mask}"
+      }
+      
+      ipv4_gateway = "${var.network_gateway}"  
     }
   } 
-
-  connection {
-    type     = "winrm"
-    user     = "Administrator"
-    password = "${var.windows_password}"
-    timeout  = "30m"
-  }
-
-  provisioner "file" {
-    source      = "iis.ps1"
-    destination = "C:\\scripts\\iis.ps1"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "powershell.exe -File C:\\scripts\\iis.ps1"
-    ]
-  }
 }
