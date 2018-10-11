@@ -50,10 +50,6 @@ resource "vsphere_virtual_machine" "instance" {
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
     customize {
-      linux_options {
-        host_name = "${var.name}"
-        domain    = "${var.domain}"
-      }
       windows_options {
         computer_name  = "${var.name}"
         admin_password = "${var.windows_password}"
