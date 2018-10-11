@@ -1,5 +1,5 @@
 module "windows-istance" {
-  source = "github.com/entercloudsuite/terraform-modules/vmware/instance"
+  source = "github.com/lorenzocomotti/terraform-modules//vmware/instance"
   name = "${var.name}"
   cpus = "${var.cups}"
   memory = "${var.memory}"
