@@ -62,4 +62,11 @@ resource "vsphere_virtual_machine" "instance" {
       }  
     }
   }
+  
+  customize {
+    windows_options {
+        computer_name  = "${var.name}"
+        admin_password = "${var.password}"
+    }
+  }
 }
