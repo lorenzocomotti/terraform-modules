@@ -1,7 +1,7 @@
 module "windows-istance" {
   source = "github.com/lorenzocomotti/terraform-modules//vmware/instance"
   name = "${var.name}"
-  cpus = "${var.cups}"
+  cpus = "${var.cpus}"
   memory = "${var.memory}"
   vmware_template = "${var.vmware_template}"
   quantity = "${var.quantity}"
