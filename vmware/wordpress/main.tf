@@ -85,7 +85,7 @@ resource "vsphere_virtual_machine" "instance" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/install.sh",
-      "bash /tmp/install.sh",
+      "screen bash /tmp/install.sh",
     ]
   }
 }
