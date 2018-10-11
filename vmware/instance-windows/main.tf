@@ -49,11 +49,11 @@ resource "vsphere_virtual_machine" "instance" {
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
-    customize {
-      windows_options {
-        computer_name  = "${var.name}"
-        admin_password = "${var.windows_password}"
-      }
+    #customize {
+    #  windows_options {
+    #    computer_name  = "${var.name}"
+    #    admin_password = "${var.windows_password}"
+    #  }
       network_interface {
       }  
     }
