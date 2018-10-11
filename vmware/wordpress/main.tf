@@ -54,12 +54,16 @@ resource "vsphere_virtual_machine" "instance" {
         host_name = "${var.name}"
         domain    = "${var.domain}"
       }
-      network_interface {
-        ipv4_address = "${var.network_address}"
-        ipv4_netmask = "${var.network_mask}"
-      }
       
-      ipv4_gateway = "${var.network_gateway}"
+      network_interface {
+      }
+    
+      #network_interface {
+      #  ipv4_address = "${var.network_address}"
+      #  ipv4_netmask = "${var.network_mask}"
+      #}
+       
+      #ipv4_gateway = "${var.network_gateway}"
      } 
   }
 
@@ -69,15 +73,15 @@ resource "vsphere_virtual_machine" "instance" {
     password = "${var.root_password}"
   }
   
-  provisioner "requirements" {
+  provisioner "file" {
     source      = "files/requirements.txt"
     destination = "/tmp/requirements.txt"  
   }
-  provisioner "playbook" {
+  provisioner "file" {
     source      = "files/playbook.yml"
     destination = "/tmp/playbook.yml"
   }
-  provisioner "install" {
+  provisioner "file" {
     source      = "files/install.sh"
     destination = "/tmp/install.sh"
   }
