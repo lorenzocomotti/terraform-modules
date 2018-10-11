@@ -22,7 +22,7 @@ variable "name" {
 }
 
 variable "vmware_template" {
-  default = "Windows-Server-2016"
+  default = "windows-Server-2016"
 }
 
 variable "vmware_datastore" {
