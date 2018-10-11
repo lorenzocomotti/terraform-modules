@@ -36,3 +36,6 @@ variable "vmware_datacenter" {
 
 variable "vmware_resource_pool"{
 }
+
+variable "windows_password" {
+}
