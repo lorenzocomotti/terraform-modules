@@ -54,15 +54,12 @@ resource "vsphere_virtual_machine" "instance" {
         host_name = "${var.name}"
         domain    = "${var.domain}"
       }
-      network_interface {
-      }  
-    }
-  }
-  
-  customize {
-    windows_options {
+      windows_options {
         computer_name  = "${var.name}"
         admin_password = "${var.windows_password}"
+      }
+      network_interface {
+      }  
     }
   }
 }
