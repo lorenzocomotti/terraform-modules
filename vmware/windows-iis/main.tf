@@ -29,4 +29,6 @@ module "windows-iis" {
     inline = [
       "powershell.exe -File C:\\scripts\\iis.ps1"
     ]
+  }
 }
+
