@@ -54,16 +54,13 @@ resource "vsphere_virtual_machine" "instance" {
         host_name = "${var.name}"
         domain    = "${var.domain}"
       }
-      
-      network_interface {
-      }
     
-      #network_interface {
-      #  ipv4_address = "${var.network_address}"
-      #  ipv4_netmask = "${var.network_mask}"
-      #}
+      network_interface {
+        ipv4_address = "${var.network_address}"
+        ipv4_netmask = "${var.network_mask}"
+      }
        
-      #ipv4_gateway = "${var.network_gateway}"
+      ipv4_gateway = "${var.network_gateway}"
      } 
   }
 
@@ -74,21 +71,21 @@ resource "vsphere_virtual_machine" "instance" {
   }
   
   provisioner "file" {
-    source      = "files/requirements.txt"
+    source      = "${path.module}/files/requirements.txt"
     destination = "/tmp/requirements.txt"  
   }
   provisioner "file" {
-    source      = "files/playbook.yml"
+    source      = "${path.module}/files/playbook.yml"
     destination = "/tmp/playbook.yml"
   }
   provisioner "file" {
-    source      = "files/install.sh"
+    source      = "${path.module}/files/install.sh"
     destination = "/tmp/install.sh"
   }
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/install.sh",
-      "/tmp/install.sh",
+      "bash /tmp/install.sh",
     ]
   }
 }
