@@ -22,7 +22,7 @@ variable "name" {
 }
 
 variable "vmware_template" {
-  default = "Ubuntu-16.04"
+  default = "Windows-2016"
 }
 
 variable "vmware_datastore" {

@@ -3,7 +3,7 @@ module "windows-istance" {
   name = "${var.name}"
   cpus = "${var.cups}"
   memory = "${var.memory}"
-  vmware_template = "Windows-2016"
+  vmware_template = "${var.vmware_template}"
   quantity = "${var.quantity}"
   vmware_network_name = "${var.network_name}"
   vmware_datastore = "${var.vmware_datastore}"
