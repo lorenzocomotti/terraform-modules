@@ -84,4 +84,3 @@ module "orchestrator" {
   consul = "${var.consul}" 
   consul_port = "${var.consul_port}" 
   consul_datacenter = "${var.consul_datacenter}" 
-}

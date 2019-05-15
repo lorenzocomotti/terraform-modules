@@ -1,9 +1,25 @@
 variable "quantity" {
-  default = 3
+  default = 1
 }
 
 variable "name" {
   default = "orchestrator"
+}
+
+variable "orchestrator_vip" {
+  default = "false"
+}
+
+variable "orchestrator_ip" {
+  default = "1.1.1.1"
+}
+
+variable "orchestrator_subnet" {
+  default = ""
+}
+
+variable "orchestrator_virtual_router_id" {
+  default = ""
 }
 
 variable "orchestrator_port" {
@@ -23,9 +39,7 @@ variable "consul_port" {
 }
 
 variable "consul_datacenter" {
-}
-
-variable "consul_encrypt" {
+  default = ""
 }
 
 variable "mysql_root_name" {
@@ -41,31 +55,19 @@ variable "mysql_port" {
 }
 
 variable "orchestrator_user" {
-  default = "admin"
+  default = ""
 }
 
 variable "orchestrator_password" {
   default = ""
 }
 
-variable "orchestrator_authentication_method" {
-  default = "basic"
-}
-
-variable "orchestrator_http_auth_user" {
-  default = "admin"
-}
-
-variable "orchestrator_http_auth_password" {
-  default = ""
-}
-
 variable "orchestrator_raft_enabled" {
-  default = "true"
+  default = "false"
 }
 
 variable "orchestrator_raft_data_dir" {
-  default = "/var/lib/orchestrator"
+  default = ""
 }
 
 variable "orchestrator_raft_default_port" {
@@ -74,6 +76,10 @@ variable "orchestrator_raft_default_port" {
 
 variable "orchestrator_raft_nodes" {
   default = "[]"
+}
+
+variable "discovery_port" {
+  default = "0"
 }
 
 variable "mysql_datadir" {
@@ -85,9 +91,6 @@ variable "sec_group" {
 }
 
 variable "keypair" {
-}
-
-variable "image" {
 }
 
 variable "flavor" {
@@ -102,7 +105,7 @@ variable "network_name" {
 }
 
 variable "discovery" {
-  default = "true"
+  default = "false"
 }
 
 variable "region" {
