@@ -10,6 +10,10 @@ variable "network_name" {}
 
 variable "image" {}
 
+variable "sec_group" {
+  type = "list"
+}
+
 variable "tags" {
    default = {
     "server_group" = "JENKINS"
