@@ -1,7 +1,6 @@
 module "orchestrator" {
-  source = "github.com/entercloudsuite/terraform-modules//instance?ref=2.6"
+  source = "github.com/entercloudsuite/terraform-modules//instance?ref=2.7-devel"
   name = "${var.name}"
-  image = "${var.image}"
   quantity = "${var.quantity}"
   external = "${var.external}"
   region = "${var.region}"
@@ -11,8 +10,9 @@ module "orchestrator" {
   discovery = "${var.discovery}"
   keypair = "${var.keypair}"
   userdata = "${data.template_file.cloud-config.*.rendered}"
+  allowed_address_pairs = "${var.orchestrator_ip == "" ? "127.0.0.1" : var.orchestrator_ip}/32"
   tags = {
-    "server_group" = "${var.name}"
+    "server_group" = "ORCHESTRATOR"
   }
 }
 
@@ -23,13 +23,13 @@ data "template_file" "cloud-config" {
     name = "${var.name}"
     number = "${count.index}"
     hostname = "${var.name}-${count.index}"
+    orchestrator_ip = "${var.orchestrator_ip}" 
+    orchestrator_subnet = "${var.orchestrator_subnet}" 
     orchestrator_port = "${var.orchestrator_port}" 
+    orchestrator_virtual_router_id = "${var.orchestrator_virtual_router_id}" 
     orchestrator_service_port = "${var.orchestrator_service_port}" 
     orchestrator_user = "${var.orchestrator_user}" 
     orchestrator_password = "${var.orchestrator_password}" 
-    orchestrator_http_auth_user = "${var.orchestrator_http_auth_user}"
-    orchestrator_http_auth_password = "${var.orchestrator_http_auth_password}"
-    orchestrator_authentication_method = "${var.orchestrator_authentication_method}"
     orchestrator_raft_enabled = "${var.orchestrator_raft_enabled}" 
     orchestrator_raft_data_dir = "${var.orchestrator_raft_data_dir}" 
     orchestrator_raft_default_port = "${var.orchestrator_raft_default_port}" 
@@ -37,6 +37,4 @@ data "template_file" "cloud-config" {
     consul = "${var.consul}" 
     consul_port = "${var.consul_port}" 
     consul_datacenter = "${var.consul_datacenter}" 
-    consul_encrypt = "${var.consul_encrypt}" 
   }
-}
