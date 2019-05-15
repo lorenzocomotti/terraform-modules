@@ -12,17 +12,17 @@ output "public-address" {
   value = "${openstack_networking_floatingip_v2.port_public_floating_ip.*.address}"
 }
 
-resource "openstack_networking_port_v2" "port_public" {
-  name = "${var.name}-${count.index}"
-  count = "${var.external_vip == "" ? 0 : 1}"
-  network_id = "${data.openstack_networking_network_v2.network.id}"
-  admin_state_up = "true"
-  region = "${var.region}"
-  fixed_ip = {
-    ip_address = "${var.external_vip}"
-    subnet_id = "${data.openstack_networking_subnet_v2.subnet.id}"
-  }
-}
+#resource "openstack_networking_port_v2" "port_public" {
+#  name = "${var.name}-${count.index}"
+#  count = "${var.external_vip == "" ? 0 : 1}"
+#  network_id = "${data.openstack_networking_network_v2.network.id}"
+#  admin_state_up = "true"
+#  region = "${var.region}"
+#  fixed_ip = {
+#    ip_address = "${var.external_vip}"
+#    subnet_id = "${data.openstack_networking_subnet_v2.subnet.id}"
+#  }
+#}
 
 resource "openstack_networking_floatingip_v2" "port_public_floating_ip" {
   count = "${var.external_vip == "" ? 0 : 1}"
