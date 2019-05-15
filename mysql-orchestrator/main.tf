@@ -83,4 +83,5 @@ module "orchestrator" {
   orchestrator_raft_nodes = "[ '${var.name}-orchestrator-0.node.${var.consul_datacenter}.consul', '${var.name}-orchestrator-1.node.${var.consul_datacenter}.consul', '${var.name}-orchestrator-2.node.${var.consul_datacenter}.consul' ]" 
   consul = "${var.consul}" 
   consul_port = "${var.consul_port}" 
-  consul_datacenter = "${var.consul_datacenter}" 
+  consul_datacenter = "${var.consul_datacenter}"
+}
