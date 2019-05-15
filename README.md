@@ -149,6 +149,5 @@ module "external_vip_web" {
   network_name = "${var.network_name}"
 }
 ```
-
 ## Note
 This project is still in development, more documentation and modules will be added in the future. Stay tuned!
