@@ -63,7 +63,7 @@ module "mysql-bootstrap" {
 }
 
 module "orchestrator" {
-  source = "github.com/lorenzocomotti/terraform-modules//orchestrator?ref=2.7-prerelase"
+  source = "github.com/lorenzocomotti/terraform-modules//orchestrator?ref=2-7-prerelase"
   name = "${var.name}-orchestrator"
   quantity = "${var.orchestrator_quantity}"
   external = "${var.external}"
