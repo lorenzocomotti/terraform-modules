@@ -24,12 +24,12 @@ output "public-address" {
 #  }
 #}
 
-resource "openstack_networking_floatingip_v2" "port_public_floating_ip" {
-  count = "${var.external_vip == "" ? 0 : 1}"
-  pool = "PublicNetwork"
-  port_id = "${openstack_networking_port_v2.port_public.id}"
-  region = "${var.region}"
-}
+#resource "openstack_networking_floatingip_v2" "port_public_floating_ip" {
+#  count = "${var.external_vip == "" ? 0 : 1}"
+#  pool = "PublicNetwork"
+#  port_id = "${openstack_networking_port_v2.port_public.id}"
+#  region = "${var.region}"
+#}
 
 resource "consul_catalog_entry" "service" {
   count = "${(var.external_vip == "" ? false : true) && (var.discovery ? true : false) ? 1 : 0 }"
