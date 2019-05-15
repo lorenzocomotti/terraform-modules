@@ -1,5 +1,5 @@
 module "orchestrator" {
-  source = "github.com/entercloudsuite/terraform-modules//instance?ref=2.7"
+  source = "github.com/entercloudsuite/terraform-modules//instance?ref=2.6"
   name = "${var.name}"
   image = "${var.image}"
   quantity = "${var.quantity}"
