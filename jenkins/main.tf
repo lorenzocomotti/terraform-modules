@@ -9,16 +9,6 @@ module "jenkins_ssh_sg" {
   allow_remote = "0.0.0.0/0"
 }
 
-# Create web firewall policy
-module "jenkins_web_sg" {
-  source = "github.com/entercloudsuite/terraform-modules//security?ref=2.6"
-  name = "jenkins_web_sg"
-  region = "${var.region}"
-  protocol = "tcp"
-  port_range_min = 8080
-  port_range_max = 8080
-  allow_remote = "0.0.0.0/0"
-}
 
 # Get network CIDR
 data "openstack_networking_network_v2" "network" {
