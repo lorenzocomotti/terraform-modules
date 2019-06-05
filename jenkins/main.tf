@@ -47,7 +47,7 @@ module "jenkins_master" {
   region = "${var.region}"
   image = "${var.image}"
   quantity = 1
-  external = "true"
+  external = "${var.external}"
   discovery = "true"
   flavor = "${var.master_flavor}"
   network_name = "${var.network_name}"
