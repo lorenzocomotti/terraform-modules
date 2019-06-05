@@ -8,6 +8,8 @@ variable "keyname" {}
 
 variable "network_name" {}
 
+variable "external" {}
+
 variable "image" {}
 
 variable "sec_group" {
